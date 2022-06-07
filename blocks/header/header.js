@@ -50,6 +50,14 @@ export default async function decorate(block) {
       });
     }
 
+    // active item
+    nav.querySelectorAll(':scope a').forEach((link) => {
+      const url = link.href && new URL(link.href);
+      if (url.pathname === window.location.pathname) {
+        link.classList.add('active');
+      }
+    });
+
     // hamburger for mobile
     const hamburger = document.createElement('div');
     hamburger.classList.add('nav-hamburger');

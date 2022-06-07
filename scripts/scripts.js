@@ -631,12 +631,12 @@ document.addEventListener('click', () => sampleRUM('click'));
 loadPage(document);
 
 function buildHeroBlock(main) {
-  const h1 = main.querySelector('h1');
+  const headings = main.querySelectorAll('main > div:first-child h1, main > div:first-child  h2');
   const picture = main.querySelector('picture');
   // eslint-disable-next-line no-bitwise
-  if (h1 && picture && (h1.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
+  if (headings[0] && picture && (headings[0].compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
     const section = document.createElement('div');
-    section.append(buildBlock('hero', { elems: [picture, h1] }));
+    section.append(buildBlock('hero', { elems: [picture, ...headings] }));
     main.prepend(section);
   }
 }
@@ -668,6 +668,16 @@ function buildAutoBlocks(main) {
   }
 }
 
+function decorateBoxIcons(main) {
+  main.querySelectorAll(':scope img.icon').forEach((icon) => {
+    if (icon.className.includes('-box-')) {
+      const i = document.createElement('i');
+      i.classList.add(...icon.classList, 'icon-box');
+      icon.replaceWith(i);
+    }
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -680,6 +690,7 @@ export function decorateMain(main) {
 
   // hopefully forward compatible button decoration
   decorateButtons(main);
+  decorateBoxIcons(main);
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);

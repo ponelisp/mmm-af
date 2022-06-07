@@ -1,1 +1,27 @@
 /* below the fold CSS goes here */
+@font-face {
+  font-family: boxicons;
+  font-weight: 400;
+  font-style: normal;
+  src: url(/fonts/boxicons.eot) format('embedded-opentype'),url(/fonts/boxicons.woff2) format('woff2'),url(/fonts/boxicons.woff) format('woff'),url(../fonts/boxicons.ttf) format('truetype'),url(/fonts/boxicons.svg?#boxicons) format('svg')
+}
+
+i.icon.icon-box {
+  display: block;
+  margin: 40px 0 20px;
+  font-family: boxicons;
+  font-style: normal;
+  font-size: 32px;
+}
+
+i.icon-box-file::before {
+  content: "\ed38";
+}
+
+i.icon-box-tachometer::before {
+  content: "\ee9d";
+}
+
+i.icon-box-layer::before {
+  content: "\ed91";
+}

@@ -3,12 +3,13 @@ header nav {
   display: grid;
   grid-template:
     'hamburger brand tools' var(--nav-height)
-    'sections sections sections' 1fr / 50px 1fr 50px;
+    'sections sections sections' 1fr / 56px 1fr 50px;
   align-items: center;
   padding: 0 2rem;
   position: fixed;
   z-index: 1;
-  background-color: var(--background-color);
+  color: var(--nav-color);
+  background-color: var(--nav-background-color);
   width: 100vw;
   height: var(--nav-height);
   box-sizing: border-box;
@@ -19,8 +20,15 @@ header nav a:any-link {
   color: currentcolor;
 }
 
+header nav a.active:any-link {
+  color: var(--nav-active-color);
+}
+
 header nav[aria-expanded='true'] {
-  grid-template: 'hamburger brand' 'sections sections' 'tools tools';
+  grid-template:
+    'hamburger brand' var(--nav-height)
+    'sections sections'
+    'tools tools';
   grid-template-columns:  56px 1fr;
   overflow-y: scroll;
   min-height: 100vh;
@@ -29,10 +37,13 @@ header nav[aria-expanded='true'] {
 
 /* brand */
 header .nav-brand {
+  background: url("/icons/af-logo.png") no-repeat;
   grid-area: brand;
   font-size: 22px;
   font-weight: 700;
   line-height: 1em;
+  height: 100%;
+  width: 267px;
 }
 
 header nav .nav-brand p {
@@ -46,8 +57,8 @@ header nav .nav-brand img {
 /* hamburger */
 header nav .nav-hamburger {
   grid-area: hamburger;
+  width: 56px;
   height: 22px;
-  padding-top: 3px;
   cursor: pointer;
 }
 
@@ -156,7 +167,7 @@ header nav[aria-expanded='true'] .nav-tools li {
 }
 
 /* desktop nav styles */
-@media (min-width: 1000px) {
+@media (min-width: 1100px) {
   header nav {
     display: flex;
     justify-content: space-between;
@@ -191,7 +202,8 @@ header nav[aria-expanded='true'] .nav-tools li {
   }
 
   header nav .nav-brand {
-    flex: 0 0 150px;
+    flex: 0 0 267px;
+    height: 80px;
   }
 
   header nav .nav-sections ul {
@@ -208,7 +220,7 @@ header nav[aria-expanded='true'] .nav-tools li {
   }
 
   header nav .nav-sections > ul > li {
-    padding: 0 16px;
+    padding: 0 0 0 16px;
     position: relative;
     font-size: 16px;
     margin: 0;
@@ -228,6 +240,17 @@ header nav[aria-expanded='true'] .nav-tools li {
 
   header nav .nav-sections > ul > li > ul:any-link {
     font-size: var(--body-font-size-m);
+  }
+
+  header nav .nav-sections > ul > li a:any-link {
+    padding: 10px;
+  }
+
+  header nav .nav-sections > ul > li a:hover {
+    padding: 10px;
+    color: #fff;
+    background: #F37345;
+    text-decoration: none;
   }
 
   header nav .nav-sections > ul > li > ul::before {
