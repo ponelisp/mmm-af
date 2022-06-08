@@ -1,14 +1,128 @@
 footer {
-  padding: 2rem;
-  background-color: var(--overlay-background-color);
+  color: var(--footer-color);
+  background-color: var(--footer-background-color);
   font-size: var(--body-font-size-s);
 }
 
 footer .footer {
-  max-width: 768px;
-  margin: auto;
+  padding-top: 1rem;
+}
+
+footer .footer > div {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+footer .footer > div > div {
+  padding: 0 2rem;
+}
+
+footer .footer a:any-link {
+  color: currentColor;
+  text-decoration: none;
+}
+
+footer .footer h4 {
+  font-size: var(--heading-font-size-xs);
+  font-weight: normal;
 }
 
 footer .footer p {
   margin: 0;
+  font-size: 90%;
+}
+
+footer .footer ul {
+  list-style: none;
+  padding-left: 20px;
+  font-size: 90%;
+}
+
+footer .footer ul li {
+  padding: 10px 0;
+}
+
+footer .footer ul li::before {
+  content: "\ecb3";
+  font-family: "boxicons";
+}
+
+@media (min-width:900px) {
+  footer .footer > div {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  footer .footer > div > div {
+    width: 30%;
+  }
+}
+
+/* copyright and social links */
+
+footer .footer > div > div:last-child {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: var(--nav-background-color);
+  font-size: 13px;
+  align-self: flex-end;
+  width: calc(100% - 2rem);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+footer .footer > div > div:last-child ul {
+  display: flex;
+  padding: 0;
+  flex-direction: row;
+  justify-content: center;
+}
+
+footer .footer > div > div:last-child ul li::before {
+  content: "";
+}
+
+footer .footer > div > div:last-child ul li a:any-link {
+  background-color: #fff;
+  color: var(--nav-background-color);
+  display: inline-block;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  padding: 2px 8px;
+  box-sizing: border-box;
+  margin-right: 8px;
+}
+
+footer .footer > div > div:last-child ul li a:hover {
+  color: #fff;
+  background-color: var(--nav-background-color);
+}
+
+footer .footer > div > div:last-child ul li .icon-box {
+  margin: 0;
+  font-size: 20px;
+}
+
+@media (min-width:900px) {
+  footer .footer > div {
+    max-width: 100vw;
+    justify-content: center;
+  }
+  footer .footer > div > div {
+    max-width: 267px;
+  }
+  footer .footer > div > div:last-child {
+    max-width: unset;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer .footer > div > div:last-child ul {
+    margin: 0;
+    align-self: flex-end;
+  }
 }

@@ -668,7 +668,7 @@ function buildAutoBlocks(main) {
   }
 }
 
-function decorateBoxIcons(main) {
+export function decorateBoxIcons(main) {
   main.querySelectorAll(':scope img.icon').forEach((icon) => {
     if (icon.className.includes('-box-')) {
       const i = document.createElement('i');

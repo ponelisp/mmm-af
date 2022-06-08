@@ -8,7 +8,7 @@
 
 i.icon.icon-box {
   display: block;
-  margin: 40px 0 20px;
+  margin: 30px 0 20px;
   font-family: boxicons;
   font-style: normal;
   font-size: 32px;
@@ -24,4 +24,20 @@ i.icon-box-tachometer::before {
 
 i.icon-box-layer::before {
   content: "\ed91";
+}
+
+i.icon-box-linkedin::before {
+  content: "\e944";
+}
+
+i.icon-box-facebook::before {
+  content: "\e926";
+}
+
+i.icon-box-twitter::before {
+  content: "\e979";
+}
+
+i.icon-box-instagram::before {
+  content: "\e939";
 }

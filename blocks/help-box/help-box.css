@@ -1,0 +1,26 @@
+.help-box {
+  position: relative;
+  background-color: var(--background-color);
+  box-shadow: 0 0 30px rgb(214 215 216 / 60%);
+  padding: 20px;
+  font-size: 14px;
+}
+
+.help-box h3 {
+  font-size: var(--heading-font-size-s);
+}
+
+.help-box > div > div:first-child img {
+  width: 64px;
+}
+
+@media (min-width:900px) {
+  .help-box {
+    padding-left: 100px;
+  }
+
+  .help-box > div > div:first-child img {
+    position: absolute;
+    left: 20px;
+  }
+}

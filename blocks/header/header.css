@@ -168,8 +168,15 @@ header nav[aria-expanded='true'] .nav-tools li {
 
 /* desktop nav styles */
 @media (min-width: 1100px) {
+  header .header {
+    width: 1100px;
+    margin: 0 auto;    
+  }
+
   header nav {
     display: flex;
+    width: 1100px;
+    margin: 0 auto;
     justify-content: space-between;
     height: var(--nav-height);
     padding: 16px 2rem;
@@ -209,6 +216,7 @@ header nav[aria-expanded='true'] .nav-tools li {
   header nav .nav-sections ul {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     background-color: unset;
     width: unset;
     margin: 0;
