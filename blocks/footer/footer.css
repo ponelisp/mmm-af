@@ -63,7 +63,6 @@ footer .footer ul li::before {
 
 footer .footer > div > div:last-child {
   margin-top: 2rem;
-  padding: 1rem;
   background-color: var(--nav-background-color);
   font-size: 13px;
   align-self: flex-end;
@@ -73,9 +72,13 @@ footer .footer > div > div:last-child {
   flex-direction: column;
 }
 
+footer .footer > div > div:last-child p {
+  padding: 1rem 2rem;
+}
+
 footer .footer > div > div:last-child ul {
   display: flex;
-  padding: 0;
+  padding: 0 0 2rem 0;
   flex-direction: row;
   justify-content: center;
 }
@@ -111,18 +114,27 @@ footer .footer > div > div:last-child ul li .icon-box {
     max-width: 100vw;
     justify-content: center;
   }
+
   footer .footer > div > div {
     max-width: 267px;
   }
+
   footer .footer > div > div:last-child {
+    padding: 1rem;
     max-width: unset;
+    align-self: center;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
 
+  footer .footer > div > div:last-child p {
+    padding: 0;
+  }
+
   footer .footer > div > div:last-child ul {
     margin: 0;
+    padding: 0;
     align-self: flex-end;
   }
 }

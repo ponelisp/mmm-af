@@ -66,6 +66,8 @@ body.appear {
 header {
   height: var(--nav-height);
   background-color: var(--nav-background-color);
+  position: fixed;
+  width: 100vw;
 }
 
 h1, h2, h3,
@@ -179,7 +181,7 @@ main input:hover {
 }
 
 main .section {
-  padding: 64px;
+  padding: 32px;
 }
 
 main pre {
@@ -230,7 +232,7 @@ main img {
   }
   
   .section > div {
-    max-width: 1100px;
+    max-width: 960px;
     margin: auto;
   }
 }

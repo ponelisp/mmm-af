@@ -690,7 +690,6 @@ export function decorateMain(main) {
 
   // hopefully forward compatible button decoration
   decorateButtons(main);
-  decorateBoxIcons(main);
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
@@ -704,6 +703,7 @@ async function loadEager(doc) {
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
+    decorateBoxIcons(main);
     decorateMain(main);
     await waitForLCP();
   }
