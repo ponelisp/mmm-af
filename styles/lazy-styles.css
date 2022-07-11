@@ -23,6 +23,8 @@ span.icon {
   font-size: 32px;
 }
 
+/* boxicons */
+
 span.icon-file::before {
   content: "\ed38";
 }
@@ -51,6 +53,16 @@ span.icon-instagram::before {
   content: "\e939";
 }
 
+span.icon-money::before {
+  content: "\edf6";
+}
+
+span.icon-question-mark:before {
+  content: "\ee33";
+}
+
+/* bootstrap icons */
+
 span.icon-person-video2::before {
   font-family: bootstrap-icons;
   content: "\f678";
@@ -64,4 +76,14 @@ span.icon-person-video3::before {
 span.icon-file-earmark-pdf::before {
   font-family: bootstrap-icons;
   content: "\f63e";
+}
+
+span.icon-safe::before {
+  font-family: bootstrap-icons;
+  content: "\f65a";
+}
+
+span.icon-exclamation::before {
+  font-family: bootstrap-icons;
+  content: "\f33c";
 }
