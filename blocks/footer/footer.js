@@ -1,4 +1,4 @@
-import { readBlockConfig, decorateBoxIcons, decorateIcons } from '../../scripts/scripts.js';
+import { readBlockConfig, decorateIcons } from '../../scripts/scripts.js';
 
 /**
  * loads and decorates the footer
@@ -14,7 +14,6 @@ export default async function decorate(block) {
   const html = await resp.text();
   const footer = document.createElement('div');
   footer.innerHTML = html;
-  decorateBoxIcons(footer);
   await decorateIcons(footer);
   block.append(footer);
 }

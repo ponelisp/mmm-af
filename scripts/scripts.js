@@ -192,27 +192,17 @@ export async function fetchPlaceholders(prefix = 'default') {
  * Decorates a block.
  * @param {Element} block The block element
  */
-export function decorateBlock(block) {
-  const trimDashes = (str) => str.replace(/(^\s*-)|(-\s*$)/g, '');
-  const classes = Array.from(block.classList.values());
-  const blockName = classes[0];
-  if (!blockName) return;
-  const section = block.closest('.section');
-  if (section) {
-    section.classList.add(`${blockName}-container`.replace(/--/g, '-'));
+ export function decorateBlock(block) {
+  const shortBlockName = block.classList[0];
+  if (shortBlockName) {
+    block.classList.add('block');
+    block.setAttribute('data-block-name', shortBlockName);
+    block.setAttribute('data-block-status', 'initialized');
+    const blockWrapper = block.parentElement;
+    blockWrapper.classList.add(`${shortBlockName}-wrapper`);
+    const section = block.closest('.section');
+    if (section) section.classList.add(`${shortBlockName}-container`);
   }
-  const blockWithVariants = blockName.split('--');
-  const shortBlockName = trimDashes(blockWithVariants.shift());
-  const variants = blockWithVariants.map((v) => trimDashes(v));
-  block.classList.add(shortBlockName);
-  block.classList.add(...variants);
-
-  block.classList.add('block');
-  block.setAttribute('data-block-name', shortBlockName);
-  block.setAttribute('data-block-status', 'initialized');
-
-  const blockWrapper = block.parentElement;
-  blockWrapper.classList.add(`${shortBlockName}-wrapper`);
 }
 
 /**
@@ -668,16 +658,6 @@ function buildAutoBlocks(main) {
   }
 }
 
-export function decorateBoxIcons(main) {
-  main.querySelectorAll(':scope img.icon').forEach((icon) => {
-    if (icon.className.includes('-box-')) {
-      const i = document.createElement('i');
-      i.classList.add(...icon.classList, 'icon-box');
-      icon.replaceWith(i);
-    }
-  });
-}
-
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -690,7 +670,7 @@ export function decorateMain(main) {
 
   // hopefully forward compatible button decoration
   decorateButtons(main);
-  decorateIcons(main);
+  // decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
@@ -703,7 +683,6 @@ async function loadEager(doc) {
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
-    decorateBoxIcons(main);
     decorateMain(main);
     await waitForLCP();
   }

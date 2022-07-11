@@ -3,41 +3,65 @@
   font-family: boxicons;
   font-weight: 400;
   font-style: normal;
-  src: url(/fonts/boxicons.eot) format('embedded-opentype'),url(/fonts/boxicons.woff2) format('woff2'),url(/fonts/boxicons.woff) format('woff'),url(../fonts/boxicons.ttf) format('truetype'),url(/fonts/boxicons.svg?#boxicons) format('svg')
+  src: url("/fonts/boxicons.woff2") format("woff2");
 }
 
-i.icon.icon-box {
+@font-face {
+  font-family: "bootstrap-icons";
+  font-weight: normal;
+  font-style: normal;
+  src: url("/fonts/bootstrap-icons.woff2") format("woff2");
+}
+
+span.icon {
   display: block;
   margin: 30px 0 20px;
+  padding: 0;
+  height: 32px;
   font-family: boxicons;
   font-style: normal;
   font-size: 32px;
 }
 
-i.icon-box-file::before {
+span.icon-file::before {
   content: "\ed38";
 }
 
-i.icon-box-tachometer::before {
+span.icon-tachometer::before {
   content: "\ee9d";
 }
 
-i.icon-box-layer::before {
+span.icon-layer::before {
   content: "\ed91";
 }
 
-i.icon-box-linkedin::before {
+span.icon-linkedin::before {
   content: "\e944";
 }
 
-i.icon-box-facebook::before {
+span.icon-facebook::before {
   content: "\e926";
 }
 
-i.icon-box-twitter::before {
+span.icon-twitter::before {
   content: "\e979";
 }
 
-i.icon-box-instagram::before {
+span.icon-instagram::before {
   content: "\e939";
+}
+
+span.icon-person-video2::before {
+  font-family: bootstrap-icons;
+  content: "\f678";
+}
+
+span.icon-person-video3::before {
+  font-family: bootstrap-icons;
+  content: "\f679";
+}
+
+span.icon-file-earmark-pdf::before {
+  font-family: bootstrap-icons;
+  content: "\f63e";
 }
