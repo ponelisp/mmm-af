@@ -1,5 +1,5 @@
 main .section.cards-container {
-    padding: 40px 12px 0;
+    padding: 40px 12px;
 }
 
 .cards > ul {
@@ -25,6 +25,10 @@ main .section.cards-container {
     line-height: 0;
 }
 
+.cards .cards-card-icon:first-of-type {
+    height: 72px;
+}
+
 .cards .cards-card-body > *:first-child {
     margin-top: 0;
 }
@@ -33,14 +37,19 @@ main .section.cards-container {
     color: currentColor;
 }
 
-.cards > ul > li img {
+.cards > ul > li > .cards-card-icon span.icon,
+.cards > ul > li > div:first-child img {
     height: 32px;
     margin: 40px 20px 20px;
 }
 
-.cards > ul > li i.icon.icon-box {
+.cards > ul > li > .cards-card-icon span.icon {
+    margin-top: 20px;
+}
+
+.cards > ul > li span.icon {
     display: block;
-    margin: 40px 0 20px;
+    height: fit-content;
 }
   
 .cards > ul > li:nth-child(1) {
@@ -75,5 +84,89 @@ main .section.cards-container {
 
     .section > .cards-wrapper {
         max-width: 960px;
+    }
+}
+
+/* cards (image) styles */
+
+.cards.image > ul {
+    grid-template-columns: repeat(auto-fill, 100%);
+}
+
+.cards.image > ul > li {
+    background-color: transparent;
+    max-width: 516px;
+    margin: 0 auto;
+}
+
+.cards.image .cards-card-image {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 50px 20px;
+    margin-top: 40px;
+    height: 240px;
+}
+
+.cards.image .cards-card-image img {
+    position: absolute;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+}
+
+.cards.image .cards-card-body {
+    margin: 0;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--text-color);
+    font-size: var(--body-font-size-s);
+    line-height: 1.6;
+    text-align: center;
+}
+
+.cards.image .cards-card-body p.button-container {
+    text-align: center;
+}
+
+.cards.image .cards-card-body a.button {
+    display: initial;
+    background: none;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    white-space: initial;
+    font-size: var(--body-font-size-m);
+}
+
+.cards.image .cards-card-icon {
+    line-height: 1.6;
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    top: -32px;
+    left: 0;
+}
+
+.cards.image .cards-card-icon span.icon {
+    margin: 0 auto;
+    box-sizing: border-box;
+    background-color: var(--nav-background-color);
+    color: white;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 10px;
+}
+
+@media (min-width:900px) {
+    .cards.image > ul {
+        grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
     }
 }
