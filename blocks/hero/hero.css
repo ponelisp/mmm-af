@@ -44,13 +44,13 @@ main .hero picture {
 main .hero img {
     object-fit: cover;
     width: auto;
-    height: 600px;
+    height: 80vh;
+    max-height: 600px;
 }
 
 @media (min-width:900px) {
     main .hero {
         width: 100vw;
-        max-height: 40vh;
         padding: 2rem 0;
     }
 
@@ -62,7 +62,6 @@ main .hero img {
         object-fit: cover;
         width: 100%;
         height: unset;
-        max-height: 50vh;
     }
 }
 

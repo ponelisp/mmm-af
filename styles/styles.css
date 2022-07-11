@@ -17,7 +17,7 @@
   --background-color: #fff;
   --overlay-background-color: #eee;
   --highlight-background-color: #ccc;
-  --text-color: #313030;
+  --text-color: #656262;
 
   /* fonts */
   --heading-font-family: var(--body-font-family);
@@ -31,12 +31,12 @@
   --body-font-size-s: 16px;
 
   /* heading sizes */
-  --heading-font-size-xxl: 48px;
-  --heading-font-size-xl: 40px;
-  --heading-font-size-l: 32px;
-  --heading-font-size-m: 24px;
-  --heading-font-size-s: 20px;
-  --heading-font-size-xs: 18px;
+  --heading-font-size-xxxl: 48px;
+  --heading-font-size-xxl: 40px;
+  --heading-font-size-xl: 32px;
+  --heading-font-size-l: 24px;
+  --heading-font-size-m: 20px;
+  --heading-font-size-s: 18px;
 
   /* nav */
   --nav-height: 80px;
@@ -74,7 +74,7 @@ h1, h2, h3,
 h4, h5, h6 {
   font-weight: 600;
   line-height: 1.25;
-  margin-top: 1em;
+  margin-top: .5em;
   margin-bottom: .5em;
   scroll-margin: calc(var(--nav-height) + 1em);
 }
@@ -182,6 +182,10 @@ main input:hover {
 
 main .section {
   padding: 32px;
+}
+
+main .section.grey {
+  background-color: var(--overlay-background-color);
 }
 
 main pre {
