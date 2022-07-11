@@ -145,7 +145,7 @@ function replaceIcons(element) {
  * Replace icons with inline SVG and prefix with codeBasePath.
  * @param {Element} element
  */
-export function decorateIcons(element) {
+export function decorateIcons(element = document) {
   // prepare for forward compatible icon handling
   replaceIcons(element);
 
