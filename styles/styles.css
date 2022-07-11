@@ -185,6 +185,8 @@ main .section {
 }
 
 main .section.grey {
+  position: relative;
+  z-index: -2;
   background-color: var(--overlay-background-color);
 }
 

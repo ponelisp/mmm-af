@@ -9,27 +9,15 @@ export default function decorate(block) {
     [...li.children].forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) {
         div.className = 'cards-card-image';
-        if (block.classList.contains('image')) {
-          // add image as background of container
-          const img = div.querySelector('picture > img');
-          if (img) {
-            div.style.backgroundImage = `url(${img.src})`;
-            div.querySelector('picture').remove();
-          }
-          li.prepend(div);
-        }
+        li.prepend(div);
       } else if (div.querySelector('.icon')) {
         div.className = 'cards-card-icon';
       } else {
         div.className = 'cards-card-body';
       }
     });
-    if (block.classList.contains('image')) {
-      // wrap card body in image container
-      const imgContainer = li.querySelector('.cards-card-image');
-      if (imgContainer) {
-        imgContainer.append(...li.querySelectorAll(':scope > *:not(.cards-card-image'));
-      }
+    if (block.classList.contains('highlight')) {
+      block.parentElement.classList.add('highlight');
     }
     ul.append(li);
   });
