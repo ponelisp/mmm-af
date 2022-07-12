@@ -12,8 +12,8 @@
 
  :root {
   /* colors */
-  --link-color: #035fe6;
-  --link-hover-color: #136ff6;
+  --link-color: rgba(241, 90, 34, 0.9);
+  --link-hover-color: #F69521;
   --background-color: #fff;
   --overlay-background-color: #eee;
   --highlight-background-color: #ccc;
@@ -93,6 +93,16 @@ h6 { font-size: var(--heading-font-size-xs) }
 .default-content-wrapper h5,
 .default-content-wrapper h6 {
   text-align: center;
+}
+
+h1 > span.icon,
+h2 > span.icon,
+h3 > span.icon,
+h4 > span.icon,
+h5 > span.icon,
+h6 > span.icon {
+  display: inline;
+  margin-right: 10px;
 }
 
 p, dl, ol, ul, pre, blockquote {
