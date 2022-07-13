@@ -41,7 +41,7 @@ export default function decorate(block) {
   });
 
   block.innerHTML = '';
-  faqs.forEach((faq) => {
+  faqs.forEach((faq, i) => {
     const { question, answer } = faq;
 
     const accordion = document.createElement('div');
@@ -62,6 +62,9 @@ export default function decorate(block) {
     accordion.append(answerDiv);
     answerDiv.innerHTML = answer;
 
+    if (i === 0) {
+      accordion.classList.add('active');
+    }
   });
 
   addFaqEventListeners(block);
