@@ -12,6 +12,8 @@ main .section.cards-container {
 }
 
 .cards > ul > li {
+    position: relative;
+    z-index: 1;
     border-radius: 10px;
     color: #fff;
     transition: all 0.3s ease-in-out;
