@@ -229,3 +229,7 @@ main .section.cards-container {
         max-width: 1200px;
     }
 }
+
+.cards.image.wide ul {
+    display: flex;
+}

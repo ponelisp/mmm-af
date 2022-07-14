@@ -260,3 +260,12 @@ main .section[data-section-status='initialized'] {
 main .section.highlight {
   background-color: var(--highlight-background-color);
 }
+
+.section-title h2 {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    padding-bottom: 0;
+    font-family: "Hero New", sans-serif;
+    color: #635551;
+}
