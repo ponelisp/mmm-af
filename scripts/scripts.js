@@ -457,44 +457,6 @@ export function normalizeHeadings(el, allowedHeadings) {
 }
 
 /**
- * Turns absolute links within the domain into relative links.
- * @param {Element} main The container element
- */
-export function makeLinksRelative(main) {
-  main.querySelectorAll('a').forEach((a) => {
-    // eslint-disable-next-line no-use-before-define
-    const hosts = ['hlx.page', 'hlx.live', ...PRODUCTION_DOMAINS];
-    if (a.href) {
-      try {
-        const url = new URL(a.href);
-        const relative = hosts.some((host) => url.hostname.includes(host));
-        if (relative) a.href = `${url.pathname}${url.search}${url.hash}`;
-      } catch (e) {
-        // something went wrong
-        // eslint-disable-next-line no-console
-        console.log(e);
-      }
-    }
-  });
-}
-
-/**
- * Decorates the picture elements and removes formatting.
- * @param {Element} main The container element
- */
-export function decoratePictures(main) {
-  main.querySelectorAll('img[src*="/media_"').forEach((img, i) => {
-    const newPicture = createOptimizedPicture(img.src, img.alt, !i);
-    const picture = img.closest('picture');
-    if (picture) picture.parentElement.replaceChild(newPicture, picture);
-    if (['EM', 'STRONG'].includes(newPicture.parentElement.tagName)) {
-      const styleEl = newPicture.parentElement;
-      styleEl.parentElement.replaceChild(newPicture, styleEl);
-    }
-  });
-}
-
-/**
  * Set template (page structure) and theme (page styles).
  */
 function decorateTemplateAndTheme() {
@@ -662,14 +624,7 @@ function decorateExternalLinks(main) {
  */
 async function decorateModalLinks(main) {
   const prefix = '#modal-';
-  const modalLinks = [...main.querySelectorAll('a')]
-    .filter((a) => {
-      if (!a.href) {
-        return false;
-      }
-      const { pathname, hash } = new URL(a.href);
-      return hash.startsWith(prefix) && pathname === window.location.pathname;
-    });
+  const modalLinks = main.querySelectorAll(`a[href^="${prefix}"]`);
   if (modalLinks.length > 0) {
     const { autoBlockModal } = await import('../blocks/modal/modal.js')
     modalLinks.forEach((link) => autoBlockModal(link, prefix));
@@ -694,11 +649,6 @@ function buildAutoBlocks(main) {
  * @param {Element} main The main element
  */
 export function decorateMain(main) {
-  // forward compatible pictures redecoration
-  decoratePictures(main);
-  // forward compatible link rewriting
-  makeLinksRelative(main);
-
   // hopefully forward compatible button decoration
   decorateButtons(main);
   decorateExternalLinks(main);
