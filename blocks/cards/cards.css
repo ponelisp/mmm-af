@@ -36,7 +36,12 @@ main .section.cards-container {
 }
 
 .cards .cards-card-body a:any-link {
-    color: currentColor;
+    color: currentcolor;
+}
+
+.cards > ul > li span.icon {
+    display: block;
+    height: fit-content;
 }
 
 .cards > ul > li > .cards-card-icon span.icon,
@@ -49,11 +54,6 @@ main .section.cards-container {
     margin-top: 20px;
 }
 
-.cards > ul > li span.icon {
-    display: block;
-    height: fit-content;
-}
-  
 .cards > ul > li:nth-child(1) {
     background-color: #124E57;
 }
@@ -71,7 +71,6 @@ main .section.cards-container {
 }
 
 @media (min-width:1100px) {
-
     .cards > ul {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
@@ -99,17 +98,10 @@ main .section.cards-container {
     position: relative;
     border-radius: 0;
     background-color: transparent;
+    width: 80vw;
     max-width: 516px;
     margin: 40px auto 0;
 }
-
-/* .cards.image .cards-card-image {
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 50px 20px;
-    margin-top: 40px;
-    height: 240px;
-} */
 
 .cards.image .cards-card-image picture {
     position: absolute;
@@ -130,7 +122,7 @@ main .section.cards-container {
 .cards.image .cards-card-body {
     margin: 40px 20px 20px;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255 255 255 / 80%);
     color: var(--text-color);
     font-size: var(--body-font-size-s);
     line-height: 1.6;
@@ -190,8 +182,8 @@ main .section.cards-container {
 
 .cards.highlight > ul > li:not(:first-child) {
     background-color: white;
-    color: currentColor;
-    box-shadow: 0px 2px 15px rgb(0 0 0 / 10%);
+    color: currentcolor;
+    box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
 }
 
 .cards.highlight .cards-card-body p.button-container {
@@ -228,4 +220,14 @@ main .section.cards-container {
     .cards-wrapper.highlight {
         max-width: 1200px;
     }
+}
+
+.cards.image.wide ul {
+    display: flex;
+}
+
+/* if two items */
+.cards.image.wide ul li:first-child:nth-last-child(2),
+.cards.image.wide ul li:first-child:nth-last-child(2) ~ li {
+    width: 50%;
 }

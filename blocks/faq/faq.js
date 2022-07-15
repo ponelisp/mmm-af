@@ -1,31 +1,27 @@
-function addFaqEventListeners(block) {
-  block.querySelectorAll('.faq-question').forEach((question) => {
-    question.addEventListener('click', toggleFaq);
-    question.addEventListener('keydown', event => {
-      if (event.keyCode === 32 || event.keyCode === 13 ) {
-        toggleFaq(event);
-      }
-    });
+function closeAllOtherFaqs(faq) {
+  document.querySelectorAll('.faq-accordion').forEach((acc) => {
+    if (acc !== faq && acc.classList.contains('active')) {
+      acc.classList.remove('active');
+    }
   });
 }
 
 function toggleFaq(e) {
   const faq = e.target.parentElement;
-  console.log(faq);
   closeAllOtherFaqs(faq);
   faq.classList.toggle('active');
 }
 
-function closeAllOtherFaqs(faq) {
-  const accs = document.getElementsByClassName('faq-accordion');
-  for (let i = 0; i < accs.length; i++) {
-    if (accs[i] == faq) {
-      continue;
-    }
-    if (accs[i].classList.contains('active')) {
-      accs[i].classList.remove('active');
-    }
-  }
+function addFaqEventListeners(block) {
+  block.querySelectorAll('.faq-question').forEach((question) => {
+    question.addEventListener('click', toggleFaq);
+    question.addEventListener('keydown', (event) => {
+      const { keyCode } = event;
+      if (keyCode === 32 || keyCode === 13) {
+        toggleFaq(event);
+      }
+    });
+  });
 }
 
 export default function decorate(block) {
