@@ -19,17 +19,13 @@ main .faq .faq-question {
     padding: 10px 18px 18px;
     margin: 10px 0;
     text-decoration: none;
-    color: currentColor;
+    color: currentcolor;
     font-size: 18px;
-    -webkit-transition: all .25s ease-in-out;
     transition: all .25s ease-in-out;
     cursor: pointer;
 }
 
 main .faq .faq-question:active {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
 }
 
@@ -42,6 +38,7 @@ main .faq .faq-question::before {
   font-size: 24px;
   top: 4px;
   margin-right: 10px;
+  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
   font-family: bootstrap-icons;
   content: "\f483";
 }
@@ -91,7 +88,6 @@ main .faq .active .faq-answer {
 }
 
 main .faq .active .chevron {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
 }
 
@@ -125,6 +121,7 @@ main .faq .faq-answer p {
         font-size: 18px;
         line-height: 28px;
     }
+
     main .faq .faq-question .chevron {
         margin-top: 4px;
     }
