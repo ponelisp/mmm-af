@@ -24,3 +24,23 @@
         margin-left: unset;
     }
 }
+
+.widetext div div:nth-child(1) {
+    flex: 5%;
+}
+
+.widetext div div:nth-child(2) {
+    flex: 95%;
+}
+
+.mid-icon div div:nth-child(1) {
+    flex: 45%;
+}
+
+.mid-icon div div:nth-child(2) {
+    flex: 5%;
+}
+
+.mid-icon div div:nth-child(3) {
+    flex: 50%;
+}

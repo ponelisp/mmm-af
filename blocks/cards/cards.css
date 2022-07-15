@@ -229,3 +229,12 @@ main .section.cards-container {
         max-width: 1200px;
     }
 }
+
+.cards.image.wide ul {
+    display: flex;
+}
+/* If two items */
+.cards.image.wide ul li:first-child:nth-last-child(2),
+.cards.image.wide ul li:first-child:nth-last-child(2) ~ li {
+    width: 50%;
+}

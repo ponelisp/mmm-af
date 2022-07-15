@@ -87,3 +87,33 @@ span.icon-exclamation::before {
   font-family: bootstrap-icons;
   content: "\f33c";
 }
+
+span.icon-bi-graph-up-arrow::before {
+    font-family: bootstrap-icons;
+    content: "\F673";
+}
+
+span.icon-bi-calendar-date::before {
+    font-family: bootstrap-icons;
+    content: "\F1E4";
+}
+
+span.icon-bi-geo-alt::before {
+    font-family: bootstrap-icons;
+    content: "\F3E8";
+}
+
+span.icon-bi-geo-alt::before {
+    font-family: bootstrap-icons;
+    content: "\F3E8";
+}
+
+span.icon-bi-cash-stack::before {
+    font-family: bootstrap-icons;
+    content: "\F246";
+}
+
+span.icon-bi-exclamation::before {
+    font-family: bootstrap-icons;
+    content: "\F333";
+}
