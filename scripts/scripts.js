@@ -662,7 +662,14 @@ function decorateExternalLinks(main) {
  */
 async function decorateModalLinks(main) {
   const prefix = '#modal-';
-  const modalLinks = main.querySelectorAll(`a[href^="${prefix}"]`);
+  const modalLinks = [...main.querySelectorAll('a')]
+    .filter((a) => {
+      if (!a.href) {
+        return false;
+      }
+      const { pathname, hash } = new URL(a.href);
+      return hash.startsWith(prefix) && pathname === window.location.pathname;
+    });
   if (modalLinks.length > 0) {
     const { autoBlockModal } = await import('../blocks/modal/modal.js')
     modalLinks.forEach((link) => autoBlockModal(link, prefix));
