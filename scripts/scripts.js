@@ -457,44 +457,6 @@ export function normalizeHeadings(el, allowedHeadings) {
 }
 
 /**
- * Turns absolute links within the domain into relative links.
- * @param {Element} main The container element
- */
-export function makeLinksRelative(main) {
-  main.querySelectorAll('a').forEach((a) => {
-    // eslint-disable-next-line no-use-before-define
-    const hosts = ['hlx.page', 'hlx.live', ...PRODUCTION_DOMAINS];
-    if (a.href) {
-      try {
-        const url = new URL(a.href);
-        const relative = hosts.some((host) => url.hostname.includes(host));
-        if (relative) a.href = `${url.pathname}${url.search}${url.hash}`;
-      } catch (e) {
-        // something went wrong
-        // eslint-disable-next-line no-console
-        console.log(e);
-      }
-    }
-  });
-}
-
-/**
- * Decorates the picture elements and removes formatting.
- * @param {Element} main The container element
- */
-export function decoratePictures(main) {
-  main.querySelectorAll('img[src*="/media_"').forEach((img, i) => {
-    const newPicture = createOptimizedPicture(img.src, img.alt, !i);
-    const picture = img.closest('picture');
-    if (picture) picture.parentElement.replaceChild(newPicture, picture);
-    if (['EM', 'STRONG'].includes(newPicture.parentElement.tagName)) {
-      const styleEl = newPicture.parentElement;
-      styleEl.parentElement.replaceChild(newPicture, styleEl);
-    }
-  });
-}
-
-/**
  * Set template (page structure) and theme (page styles).
  */
 function decorateTemplateAndTheme() {
@@ -613,7 +575,6 @@ initHlx();
 
 const LCP_BLOCKS = ['hero']; // add your LCP blocks to the list
 const RUM_GENERATION = 'project-1'; // add your RUM generation information here
-const PRODUCTION_DOMAINS = [];
 
 sampleRUM('top');
 window.addEventListener('load', () => sampleRUM('load'));
@@ -650,10 +611,25 @@ function loadFooter(footer) {
 function decorateExternalLinks(main) {
   main.querySelectorAll('a').forEach((a) => {
     const href = a.getAttribute('href');
-    if (!href.startsWith('/')) {
+    if (!href.startsWith('/')
+      && !href.startsWith('#')) {
       a.setAttribute('target', '_blank');
     }
   });
+}
+
+/**
+ * Finds and decorates modal links.
+ * @param {Element} main The container element
+ */
+async function decorateModalLinks(main) {
+  const prefix = '#modal-';
+  const modalLinks = main.querySelectorAll(`a[href^="${prefix}"]`);
+  if (modalLinks.length > 0) {
+    // eslint-disable-next-line import/no-cycle
+    const { autoBlockModal } = await import('../blocks/modal/modal.js');
+    modalLinks.forEach((link) => autoBlockModal(link, prefix));
+  }
 }
 
 /**
@@ -674,11 +650,6 @@ function buildAutoBlocks(main) {
  * @param {Element} main The main element
  */
 export function decorateMain(main) {
-  // forward compatible pictures redecoration
-  decoratePictures(main);
-  // forward compatible link rewriting
-  makeLinksRelative(main);
-
   // hopefully forward compatible button decoration
   decorateButtons(main);
   decorateExternalLinks(main);
@@ -712,6 +683,8 @@ async function loadLazy(doc) {
 
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
+
+  decorateModalLinks(main);
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   addFavIcon(`${window.hlx.codeBasePath}/icons/favicon.svg`);
