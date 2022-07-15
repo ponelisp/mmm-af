@@ -19,7 +19,7 @@ footer .footer > div > div {
 }
 
 footer .footer a:any-link {
-  color: currentColor;
+  color: currentcolor;
   text-decoration: none;
 }
 
@@ -45,13 +45,13 @@ footer .footer ul li {
 
 footer .footer ul li::before {
   content: "\ecb3";
-  font-family: "boxicons";
+  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+  font-family: boxicons;
 }
 
 @media (min-width:900px) {
   footer .footer > div {
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
   }
 
   footer .footer > div > div {
@@ -79,7 +79,7 @@ footer .footer > div > div:last-child p {
 
 footer .footer > div > div:last-child ul {
   display: flex;
-  padding: 0 0 2rem 0;
+  padding: 0 0 2rem;
   flex-direction: row;
   justify-content: center;
 }
