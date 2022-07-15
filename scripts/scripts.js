@@ -649,10 +649,24 @@ function loadFooter(footer) {
 function decorateExternalLinks(main) {
   main.querySelectorAll('a').forEach((a) => {
     const href = a.getAttribute('href');
-    if (!href.startsWith('/')) {
+    if (!href.startsWith('/')
+      && !href.startsWith('#')) {
       a.setAttribute('target', '_blank');
     }
   });
+}
+
+/**
+ * Finds and decorates modal links.
+ * @param {Element} main The container element
+ */
+async function decorateModalLinks(main) {
+  const prefix = '#modal-';
+  const modalLinks = main.querySelectorAll(`a[href^="${prefix}"]`);
+  if (modalLinks.length > 0) {
+    const { autoBlockModal } = await import('../blocks/modal/modal.js')
+    modalLinks.forEach((link) => autoBlockModal(link, prefix));
+  }
 }
 
 /**
@@ -711,6 +725,8 @@ async function loadLazy(doc) {
 
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
+
+  decorateModalLinks(main);
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   addFavIcon(`${window.hlx.codeBasePath}/icons/favicon.svg`);

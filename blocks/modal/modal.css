@@ -1,0 +1,29 @@
+.modal-wrapper {
+  position: relative;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.modal {
+  font-size: 90%;
+  z-index: 20;
+  display: none;
+  position: fixed;
+  background-color: var(--background-color);
+  box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
+  top: 100px;
+  width: 80vw;
+  max-width: 1000px;
+  max-height: calc(100vh - 100px);
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+
+.modal.appear {
+  display: block;
+}
+
+.modal a.button.modal-close {
+  margin: 0 40px 30px;
+}
