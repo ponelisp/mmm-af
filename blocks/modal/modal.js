@@ -3,75 +3,80 @@ import {
   buildBlock,
   decorateBlock,
   loadBlock,
-} from '../../scripts/scripts.js';
-import {
   loadFragment,
-} from '../fragment/fragment.js';
-
-function openModal(block) {
-  loadBlock(block);
-  block.classList.add('appear');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal(block) {
-  if (block.classList.contains('appear')) {
-    block.classList.remove('appear');
-    document.body.style.removeProperty('overflow');
-    // reset window.location.hash
-    const url = new URL(window.location);
-    url.hash = '';
-    window.history.pushState({}, '', url.toString());
-  }
-}
-
-export function getModalId(url, prefix = '#') {
-  return new URL(url).hash.replace(prefix, '');
-}
+} from '../../scripts/scripts.js';
 
 export function getModal(id, main = document) {
-  return main.querySelector(`.modal[data-id="${id}"]`);
+  return main.querySelector(`.modal[data-path="${id}"]`);
 }
 
-export function autoBlockModal(link, prefix) {
-  const id = getModalId(link.href, prefix);
-  let modal = getModal(id);
+function pathToHash(path) {
+  const segments = path.split('/');
+  segments.shift(); // drop empty first segment
+  return `#${segments.join('_')}`;
+}
+
+function pushState(hash) {
+  const newUrl = new URL(window.location);
+  newUrl.hash = hash;
+  window.history.pushState({}, `${document.title}${hash ? ' | Modal' : ''}`, newUrl.toString());
+}
+
+function openModal(section, path) {
+  let modal = getModal(path);
   if (!modal) {
     // auto-create modal block
     modal = buildBlock('modal', []);
-    modal.dataset.id = id;
+    modal.dataset.path = path;
     const modalWrapper = document.createElement('div');
     modalWrapper.append(modal);
-    const section = link.closest('.section');
     section.append(modalWrapper);
     decorateBlock(modal);
+    loadBlock(modal);
   }
+  modal.classList.add('appear');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(path) {
+  const modal = getModal(path);
+  if (modal && modal.classList.contains('appear')) {
+    modal.classList.remove('appear');
+    document.body.style.removeProperty('overflow');
+    pushState('');
+  }
+}
+
+function handleState(path) {
+  if (window.location.hash === pathToHash(path)) {
+    openModal(document.querySelector('main .section'), path);
+  } else {
+    closeModal(path);
+  }
+}
+
+export function handleModalLink(link) {
+  const path = link.getAttribute('href');
   // add modal trigger
   link.addEventListener('click', (e) => {
+    e.preventDefault();
     e.stopPropagation();
-    openModal(modal);
+    pushState(pathToHash(path));
+    handleState(path);
   });
-  // automatically show modal if window.location.hash contains id
-  function checkWindow() {
-    const checkId = getModalId(window.location.href, prefix);
-    if (checkId === id) {
-      openModal(modal);
-    } else {
-      closeModal(modal);
-    }
-  }
-  checkWindow();
+  handleState(path);
   window.addEventListener('popstate', () => {
-    checkWindow();
+    handleState(path);
   });
 }
 
 export default async function decorate(block) {
   if (block.innerHTML === '') {
     // fetch modal content
-    const modalContent = await loadFragment(`/modals/${block.dataset.id}`);
+    const { path } = block.dataset;
+    const modalContent = await loadFragment(path);
     block.innerHTML = modalContent.innerHTML;
-    // prevent clicks on modal from propagating to the document
+    // prevent clicks inside modal from propagating to document
     block.addEventListener('click', (e) => e.stopPropagation());
     // add close button
     const modalCloseBtn = document.createElement('a');
@@ -80,17 +85,17 @@ export default async function decorate(block) {
     modalCloseBtn.className = 'button primary modal-close';
     modalCloseBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      closeModal(block);
+      closeModal(path);
     });
     block.append(modalCloseBtn);
     // add close listeners
     document.addEventListener('keydown', (ev) => {
       if (ev.key === 'Escape') {
-        closeModal(block);
+        closeModal(path);
       }
     });
     document.addEventListener('click', () => {
-      closeModal(block);
+      closeModal(path);
     });
   }
 }
