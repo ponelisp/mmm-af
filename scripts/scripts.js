@@ -192,7 +192,7 @@ export async function fetchPlaceholders(prefix = 'default') {
  * Decorates a block.
  * @param {Element} block The block element
  */
- export function decorateBlock(block) {
+export function decorateBlock(block) {
   const shortBlockName = block.classList[0];
   if (shortBlockName) {
     block.classList.add('block');
@@ -624,8 +624,9 @@ loadPage(document);
 function buildHeroBlock(main) {
   const headings = main.querySelectorAll('main > div:first-child h1, main > div:first-child  h2');
   const picture = main.querySelector('picture');
-  // eslint-disable-next-line no-bitwise
-  if (headings[0] && picture && (headings[0].compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
+  if (headings[0] && picture
+    // eslint-disable-next-line no-bitwise
+    && (headings[0].compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
     const section = document.createElement('div');
     section.append(buildBlock('hero', { elems: [picture, ...headings] }));
     main.prepend(section);
