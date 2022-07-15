@@ -622,14 +622,15 @@ function decorateExternalLinks(main) {
  * Finds and decorates modal links.
  * @param {Element} main The container element
  */
-async function decorateModalLinks(main) {
-  const prefix = '#modal-';
-  const modalLinks = main.querySelectorAll(`a[href^="${prefix}"]`);
-  if (modalLinks.length > 0) {
-    // eslint-disable-next-line import/no-cycle
-    const { autoBlockModal } = await import('../blocks/modal/modal.js');
-    modalLinks.forEach((link) => autoBlockModal(link, prefix));
-  }
+async function handleLinks(main) {
+  main.querySelectorAll('a').forEach(async (a) => {
+    const href = a.getAttribute('href');
+    if (href.includes('/modals/')) {
+      // eslint-disable-next-line import/no-cycle
+      const { handleModalLink } = await import('../blocks/modal/modal.js');
+      handleModalLink(a);
+    }
+  });
 }
 
 /**
@@ -659,6 +660,23 @@ export function decorateMain(main) {
 }
 
 /**
+ * Loads a fragment.
+ * @param {string} path The path of the fragment
+ * @returns {HTMLElement} The root element of the fragment
+ */
+export async function loadFragment(path) {
+  const resp = await fetch(`${path}.plain.html`);
+  if (resp.ok) {
+    const main = document.createElement('main');
+    main.innerHTML = await resp.text();
+    decorateMain(main);
+    await loadBlocks(main);
+    return main;
+  }
+  return null;
+}
+
+/**
  * loads everything needed to get to LCP.
  */
 async function loadEager(doc) {
@@ -684,7 +702,7 @@ async function loadLazy(doc) {
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
 
-  decorateModalLinks(main);
+  handleLinks(main);
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   addFavIcon(`${window.hlx.codeBasePath}/icons/favicon.svg`);
