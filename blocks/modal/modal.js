@@ -1,9 +1,9 @@
+/* eslint-disable import/no-cycle */
 import {
   buildBlock,
   decorateBlock,
   loadBlock,
 } from '../../scripts/scripts.js';
-
 import {
   loadFragment,
 } from '../fragment/fragment.js';
@@ -21,7 +21,7 @@ function closeModal(block) {
     // reset window.location.hash
     const url = new URL(window.location);
     url.hash = '';
-    history.pushState({}, '', url.toString());
+    window.history.pushState({}, '', url.toString());
   }
 }
 
@@ -61,7 +61,7 @@ export function autoBlockModal(link, prefix) {
     }
   }
   checkWindow();
-  window.addEventListener('popstate', (e) => {
+  window.addEventListener('popstate', () => {
     checkWindow();
   });
 }
