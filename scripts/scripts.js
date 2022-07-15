@@ -192,7 +192,7 @@ export async function fetchPlaceholders(prefix = 'default') {
  * Decorates a block.
  * @param {Element} block The block element
  */
- export function decorateBlock(block) {
+export function decorateBlock(block) {
   const shortBlockName = block.classList[0];
   if (shortBlockName) {
     block.classList.add('block');
@@ -575,7 +575,6 @@ initHlx();
 
 const LCP_BLOCKS = ['hero']; // add your LCP blocks to the list
 const RUM_GENERATION = 'project-1'; // add your RUM generation information here
-const PRODUCTION_DOMAINS = [];
 
 sampleRUM('top');
 window.addEventListener('load', () => sampleRUM('load'));
@@ -586,8 +585,9 @@ loadPage(document);
 function buildHeroBlock(main) {
   const headings = main.querySelectorAll('main > div:first-child h1, main > div:first-child  h2');
   const picture = main.querySelector('picture');
-  // eslint-disable-next-line no-bitwise
-  if (headings[0] && picture && (headings[0].compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
+  if (headings[0] && picture
+    // eslint-disable-next-line no-bitwise
+    && (headings[0].compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
     const section = document.createElement('div');
     section.append(buildBlock('hero', { elems: [picture, ...headings] }));
     main.prepend(section);
@@ -626,7 +626,8 @@ async function decorateModalLinks(main) {
   const prefix = '#modal-';
   const modalLinks = main.querySelectorAll(`a[href^="${prefix}"]`);
   if (modalLinks.length > 0) {
-    const { autoBlockModal } = await import('../blocks/modal/modal.js')
+    // eslint-disable-next-line import/no-cycle
+    const { autoBlockModal } = await import('../blocks/modal/modal.js');
     modalLinks.forEach((link) => autoBlockModal(link, prefix));
   }
 }
