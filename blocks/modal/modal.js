@@ -12,8 +12,7 @@ export function getModal(id, main = document) {
 
 function pathToHash(path) {
   const segments = path.split('/');
-  segments.shift(); // drop empty first segment
-  return `#${segments.join('_')}`;
+  return `#${segments.pop()}`;
 }
 
 function pushState(hash) {
