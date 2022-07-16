@@ -21,7 +21,7 @@ function pushState(hash) {
   window.history.pushState({}, `${document.title}${hash ? ' | Modal' : ''}`, newUrl.toString());
 }
 
-function openModal(section, path) {
+async function openModal(section, path) {
   let modal = getModal(path);
   if (!modal) {
     // auto-create modal block
@@ -31,17 +31,18 @@ function openModal(section, path) {
     modalWrapper.append(modal);
     section.append(modalWrapper);
     decorateBlock(modal);
-    loadBlock(modal);
+    await loadBlock(modal);
   }
-  modal.classList.add('appear');
-  document.body.style.overflow = 'hidden';
+  modal.firstElementChild.showModal();
 }
 
 function closeModal(path) {
   const modal = getModal(path);
-  if (modal && modal.classList.contains('appear')) {
-    modal.classList.remove('appear');
-    document.body.style.removeProperty('overflow');
+  if (modal) {
+    const dialog = modal.firstElementChild;
+    if (dialog && dialog.open) {
+      dialog.close();
+    }
     pushState('');
   }
 }
@@ -74,7 +75,8 @@ export default async function decorate(block) {
     // fetch modal content
     const { path } = block.dataset;
     const modalContent = await loadFragment(path);
-    block.innerHTML = modalContent.innerHTML;
+    const dialog = block.appendChild(document.createElement('dialog'));
+    dialog.innerHTML = modalContent.innerHTML;
     // prevent clicks inside modal from propagating to document
     block.addEventListener('click', (e) => e.stopPropagation());
     // add close button
@@ -86,15 +88,9 @@ export default async function decorate(block) {
       e.preventDefault();
       closeModal(path);
     });
-    block.append(modalCloseBtn);
-    // add close listeners
-    document.addEventListener('keydown', (ev) => {
-      if (ev.key === 'Escape') {
-        closeModal(path);
-      }
-    });
-    document.addEventListener('click', () => {
-      closeModal(path);
+    dialog.append(modalCloseBtn);
+    dialog.addEventListener('cancel', () => {
+      pushState('');
     });
   }
 }

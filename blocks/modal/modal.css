@@ -1,28 +1,15 @@
-.modal-wrapper {
-  position: relative;
+/* .modal-wrapper {
   height: 0;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-}
+} */
 
-.modal {
+.modal dialog {
   font-size: 90%;
-  z-index: 20;
-  display: none;
-  position: fixed;
   background-color: var(--background-color);
+  border: none;
   box-shadow: 0 2px 15px rgb(0 0 0 / 10%);
-  top: 0;
-  width: 90vw;
-  max-height: 100vh;
-  margin: 0;
   overflow-y: scroll;
-}
-
-.modal.appear {
-  display: block;
 }
 
 .modal a.button.modal-close {
