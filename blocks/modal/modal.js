@@ -33,7 +33,11 @@ async function openModal(section, path) {
     decorateBlock(modal);
     await loadBlock(modal);
   }
-  modal.firstElementChild.showModal();
+  const dialog = modal.firstElementChild;
+  if (dialog) {
+    dialog.showModal();
+    dialog.firstElementChild.scrollIntoView();
+  }
 }
 
 function closeModal(path) {
@@ -76,7 +80,7 @@ export default async function decorate(block) {
     const { path } = block.dataset;
     const modalContent = await loadFragment(path);
     const dialog = block.appendChild(document.createElement('dialog'));
-    dialog.innerHTML = modalContent.innerHTML;
+    dialog.innerHTML = (modalContent && modalContent.innerHTML) || '';
     // prevent clicks inside modal from propagating to document
     block.addEventListener('click', (e) => e.stopPropagation());
     // add close button
