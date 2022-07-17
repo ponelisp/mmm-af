@@ -1,24 +1,24 @@
-.vtab-content img {
+.tab-content img {
   border-radius: 50%;
 }
 
-.vtab.block {
+.tabs.block {
   display: flex;
   justify-content: space-between;
 }
 
 @media (min-width: 901px) {
-  .vtab-content img {
+  .tab-content img {
     float: right;
   }
 
-  .vtab-links {
+  .tab-links {
     min-width: 35%;
   }
 }
 
 @media (max-width: 900px) {
-  .vtab.block {
+  .tabs.block {
     display: flex;
     flex-direction: column;
   }

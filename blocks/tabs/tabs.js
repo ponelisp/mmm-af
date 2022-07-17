@@ -1,8 +1,8 @@
-function openVtab(evt) {
+function openTab(evt) {
   evt.preventDefault();
   const tabId = Number(evt.target.dataset.tabId);
   // Get all elements with class="tabcontent" and hide them
-  const tabcontents = document.getElementsByClassName('vtab-content');
+  const tabcontents = document.getElementsByClassName('tab-content');
   for (let i = 0; i < tabcontents.length; i += 1) {
     if (i === tabId) {
       tabcontents[i].style.display = 'block';
@@ -16,10 +16,10 @@ function openVtab(evt) {
 export default function decorate(block) {
   const tabLinks = [];
   const tabLinksDiv = document.createElement('div');
-  tabLinksDiv.classList.add('vtab-links');
+  tabLinksDiv.classList.add('tab-links');
 
   const tabContentsDiv = document.createElement('div');
-  tabContentsDiv.classList.add('vtab-contents');
+  tabContentsDiv.classList.add('tab-contents');
 
   let idx = 0;
   block.querySelectorAll(':scope>div').forEach((row) => {
@@ -32,7 +32,7 @@ export default function decorate(block) {
     rowLink.textContent = rowLinkTxt;
     rowLink.setAttribute('data-tab-id', idx);
     idx += 1;
-    rowLink.addEventListener('click', openVtab);
+    rowLink.addEventListener('click', openTab);
 
     const tabLinkDiv = document.createElement('div');
     tabLinkDiv.appendChild(rowLink);
@@ -41,7 +41,7 @@ export default function decorate(block) {
     tabLinks.push(row);
 
     rowContentDiv.style.display = 'none';
-    rowContentDiv.classList.add('vtab-content');
+    rowContentDiv.classList.add('tab-content');
     tabContentsDiv.appendChild(rowContentDiv);
   });
   tabContentsDiv.firstChild.style.display = 'block';
