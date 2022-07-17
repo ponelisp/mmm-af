@@ -30,7 +30,8 @@ export default function decorate(block) {
     const rowLink = document.createElement('a');
     rowLink.setAttribute('href', '_');
     rowLink.textContent = rowLinkTxt;
-    rowLink.setAttribute('data-tab-id', idx += 1);
+    rowLink.setAttribute('data-tab-id', idx);
+    idx += 1;
     rowLink.addEventListener('click', openVtab);
 
     const tabLinkDiv = document.createElement('div');
