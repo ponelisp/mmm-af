@@ -1,49 +1,25 @@
-
-
-/* Style the tab */
-.vtab {
-  float: left;
-}
-
-/* Style the buttons that are used to open the tab content */
-.vtab button {
-  display: block;
-  background-color: inherit;
-  color: black;
-  padding: 22px 16px;
-  width: 100%;
-  border: none;
-  outline: none;
-  text-align: left;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-/* Change background color of buttons on hover */
-.vtab button:hover {
-  background-color: #ddd;
-}
-
-/* Create an active/current "tab button" class */
-.vtab button.active {
-  background-color: #ccc;
-}
-
-/* Style the tab content */
-.vtabcontent {
-  float: left;
-  padding: 0px 12px;
-  width: 70%;
-  border-left: none;
-  height: 300px;
-}
-
-.vtabcontent img {
-  width: 550px;
+.vtab-content img {
   border-radius: 50%;
-  margin: 150px;
 }
 
-.vtab-wrapper {
-  min-height: 600px;
+.vtab.block {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (min-width: 601px) {
+  .vtab-content img {
+    float: right;
+  }
+
+  .vtab-links {
+    min-width: 35%;
+  }
+}
+
+@media (max-width: 600px) {
+  .vtab.block {
+    display: flex;
+    flex-direction: column;
+  }
 }

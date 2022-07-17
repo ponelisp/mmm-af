@@ -1,56 +1,53 @@
 export default function decorate(block) {
-    const linksDiv = document.createElement('div');
-    const textAndImgDivs = [];
-    linksDiv.classList.add('vtab');
+
+    const tabLinks = [];
+    const tabLinksDiv = document.createElement('div');
+    tabLinksDiv.classList.add('vtab-links');
+
+    const tabContentsDiv = document.createElement('div');
+    tabContentsDiv.classList.add('vtab-contents');
+
+    let idx = 0;
     block.querySelectorAll(':scope>div').forEach((row) => {
         const rowLinkDiv = row.querySelectorAll(':scope>div')[0];
-        const rowTxtDiv = row.querySelectorAll(':scope>div')[1];
-        const rowImgDiv = row.querySelectorAll(':scope>div')[2];
+        const rowContentDiv = row.querySelectorAll(':scope>div')[1];
+        const rowLinkTxt = rowLinkDiv.textContent;
 
-        const btn = document.createElement('button');
-        btn.classList.add('vtablinks');
-        btn.addEventListener('click', () => {
-            openVtab(event, rowLinkDiv.textContent);
-        });
-        btn.textContent = rowLinkDiv.textContent;
-        linksDiv.appendChild(btn);
+        const rowLink = document.createElement('a');
+        rowLink.setAttribute('href', '_');
+        rowLink.textContent = rowLinkTxt;
+        rowLink.setAttribute('data-tab-id', idx++);
+        rowLink.addEventListener('click', openVtab);
 
-        const textAndImgDiv = document.createElement('div');
-        textAndImgDiv.classList.add("vtabcontent");
+        const tabLinkDiv = document.createElement('div');
+        tabLinkDiv.appendChild(rowLink);
+        tabLinksDiv.appendChild(tabLinkDiv);
 
-        textAndImgDiv.id = rowLinkDiv.textContent;
-        textAndImgDiv.style.display = "none";
-        textAndImgDiv.appendChild(rowTxtDiv);
-        textAndImgDiv.appendChild(rowImgDiv);
+        tabLinks.push(row);
 
-        textAndImgDivs.push(textAndImgDiv);
+        rowContentDiv.style.display = 'none';
+        rowContentDiv.classList.add('vtab-content');
+        tabContentsDiv.appendChild(rowContentDiv);
     });
-    block.textContent = '';
-    block.appendChild(linksDiv);
-    textAndImgDivs.forEach((textAndImgDiv) => {
-        block.appendChild(textAndImgDiv);
-    });
-    textAndImgDivs[0].style.display = "flex";
-
+    tabContentsDiv.firstChild.style.display = 'block';
+    block.innerHTML = '';
+    block.appendChild(tabLinksDiv);
+    block.appendChild(tabContentsDiv);
+    return block;
 }
 
-function openVtab(evt, cityName) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
 
+function openVtab(evt) {
+    evt.preventDefault();
+    const tabId = Number(evt.target.dataset.tabId);
     // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("vtabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+    const tabcontents = document.getElementsByClassName("vtab-content");
+    for (let i = 0; i < tabcontents.length; i++) {
+        if(i === tabId) {
+            tabcontents[i].style.display = "block";
+        } else {
+            tabcontents[i].style.display = "none";
+        }
     }
-
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("vtablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the current tab, and add an "active" class to the link that opened the tab
-    document.getElementById(cityName).style.display = "flex";
-    evt.currentTarget.className += " active";
+    return false;
 }
