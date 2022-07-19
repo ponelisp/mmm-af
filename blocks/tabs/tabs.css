@@ -1,29 +1,3 @@
-<<<<<<< HEAD
-.tab-content img {
-  border-radius: 50%;
-}
-
-.tabs.block {
-  display: flex;
-  justify-content: space-between;
-}
-
-@media (min-width: 901px) {
-  .tab-content img {
-    float: right;
-  }
-
-  .tab-links {
-    min-width: 35%;
-  }
-}
-
-@media (max-width: 900px) {
-  .tabs.block {
-    display: flex;
-    flex-direction: column;
-  }
-=======
 main .tabs .tabs-content[aria-hidden=true] {
     display: none;
     visibility: hidden;
@@ -81,5 +55,4 @@ main .tabs-links a[aria-selected=true] {
       min-width: 70%;
       padding-left: 20px;
     }
->>>>>>> 925acc11979270a411d0178ae3835c8474550e22
 }
