@@ -48,8 +48,8 @@ function openTab(e) {
 
 export default function decorate(tabsBlock) {
   const tabLinksDiv = document.createElement('div');
-  const tabLinksOL = document.createElement('ol');
-  tabLinksDiv.appendChild(tabLinksOL);
+  const tabLinksUL = document.createElement('ul');
+  tabLinksDiv.appendChild(tabLinksUL);
   tabLinksDiv.classList.add('tabs-links');
 
   const tabContentsDiv = document.createElement('div');
@@ -91,7 +91,7 @@ export default function decorate(tabsBlock) {
 
     const tabLinkLI = document.createElement('li');
     tabLinkLI.appendChild(rowLink);
-    tabLinksOL.appendChild(tabLinkLI);
+    tabLinksUL.appendChild(tabLinkLI);
 
     rowContentDiv.setAttribute('aria-hidden', true);
     rowContentDiv.setAttribute('aria-labelledby', rowLinkTxt);
@@ -101,7 +101,7 @@ export default function decorate(tabsBlock) {
 
   // Display the first tab by default
   tabContentsDiv.firstChild.setAttribute('aria-hidden', false);
-  tabLinksOL.querySelector('a').setAttribute('aria-selected', true);
+  tabLinksUL.querySelector('a').setAttribute('aria-selected', true);
 
   tabsBlock.innerHTML = '';
   tabsBlock.appendChild(tabLinksDiv);
