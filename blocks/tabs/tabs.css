@@ -39,6 +39,10 @@ main .tabs-links a[aria-selected=true] {
 }
 
 @media (min-width: 900px) {
+    main .tabs-wrapper {
+      max-width: 1100px;
+    }
+
     main .tabs {
         flex-direction: row;
     }
