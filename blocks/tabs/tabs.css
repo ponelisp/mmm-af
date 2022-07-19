@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .tab-content img {
   border-radius: 50%;
 }
@@ -22,4 +23,39 @@
     display: flex;
     flex-direction: column;
   }
+=======
+main .tabs .tabs-content[aria-hidden=true] {
+    display: none;
+    visibility: hidden;
+}
+
+main .tabs-content img {
+    border-radius: 50%;
+}
+
+main .tabs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main .tabs-links li {
+    padding: 5px;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+@media (min-width: 900px) {
+    main .tabs {
+        flex-direction: row;
+    }
+
+    main .tabs-content img {
+        float: right;
+    }
+
+    main .tabs-links {
+        min-width: 35%;
+    }
+>>>>>>> 925acc11979270a411d0178ae3835c8474550e22
 }
