@@ -1,6 +1,6 @@
 /* below the fold CSS goes here */
 /* stylelint-disable font-family-no-missing-generic-family-keyword */
-  
+
 @font-face {
   font-family: boxicons;
   font-weight: 400;
@@ -118,4 +118,13 @@ span.icon-bi-exclamation::before {
 span.icon-life-preserver::before {
   font-family: bootstrap-icons;
   content: "\f467";
+}
+
+.retirement-picture ul li::marker {
+  font-family: bootstrap-icons;
+  content: "\F234";
+}
+
+.retirement-picture ul li {
+  padding-left: 5px;
 }
