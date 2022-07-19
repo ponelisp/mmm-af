@@ -1,0 +1,34 @@
+main .tabs .tabs-content[aria-hidden=true] {
+    display: none;
+    visibility: hidden;
+}
+
+main .tabs-content img {
+    border-radius: 50%;
+}
+
+main .tabs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main .tabs-links li {
+    padding: 5px;
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+@media (min-width: 900px) {
+    main .tabs {
+        flex-direction: row;
+    }
+
+    main .tabs-content img {
+        float: right;
+    }
+
+    main .tabs-links {
+        min-width: 35%;
+    }
+}
