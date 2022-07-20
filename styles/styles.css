@@ -14,6 +14,7 @@
   /* colors */
   --link-color: rgba(241 90 34 / 90%);
   --link-hover-color: #124e57;
+  --button-hover-color: #ffc107;
   --background-color: #fff;
   --overlay-background-color: #eee;
   --highlight-background-color: #ccc;
@@ -158,6 +159,7 @@ a.button:any-link, button {
 
 a.button:hover, a.button:focus, button:hover, button:focus  {
   background-color: var(--link-hover-color);
+  background-color: var(--button-hover-color);
   cursor: pointer;
 }
 
