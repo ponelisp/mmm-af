@@ -98,7 +98,6 @@ main .section.cards-container {
     position: relative;
     border-radius: 0;
     background-color: transparent;
-    width: 80vw;
     max-width: 516px;
     margin: 40px auto 0;
 }
