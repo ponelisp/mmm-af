@@ -29,7 +29,7 @@ main .image-table img {
     border-radius: 50%;
 }
 
-main .image-table .image-tableq-row {
+main .image-table .image-table-row {
     padding-bottom: 30px;
 }
 @media (min-width: 900px) {
