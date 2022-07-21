@@ -26,6 +26,7 @@ main .image-table .text-box {
 
 main .image-table img {
     width: 350px;
+    padding-right: 50px;
     border-radius: 50%;
 }
 
