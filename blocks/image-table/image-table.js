@@ -7,12 +7,11 @@ export default function decorate(block) {
       const pic = row.querySelectorAll('picture')[0];
       imgDiv.appendChild(pic);
     } else {
+      const classes = ["icon", "text"];
+      row.querySelectorAll(":scope>div").forEach((item, j) => {
+        item.classList.add(`${classes[j]}-box`);
+      });
       row.classList.add('image-table-row');
-      const iconDiv = row.querySelectorAll(':scope>div')[0];
-      iconDiv.classList.add('icon-box');
-
-      const textDiv = row.querySelectorAll(':scope>div')[1];
-      textDiv.classList.add('text-box');
       itemsDiv.appendChild(row);
     }
   });
