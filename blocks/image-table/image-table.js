@@ -7,8 +7,8 @@ export default function decorate(block) {
       const pic = row.querySelectorAll('picture')[0];
       imgDiv.appendChild(pic);
     } else {
-      const classes = ["icon", "text"];
-      row.querySelectorAll(":scope>div").forEach((item, j) => {
+      const classes = ['icon', 'text'];
+      row.querySelectorAll(':scope>div').forEach((item, j) => {
         item.classList.add(`${classes[j]}-box`);
       });
       row.classList.add('image-table-row');
