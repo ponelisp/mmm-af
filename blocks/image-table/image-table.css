@@ -15,7 +15,6 @@ main .image-table .icon-box {
     border-radius: 50px;
     transition: 0.5s;
     background: #fff;
-    margin: 0 auto 20px auto;
     text-align: center;
     line-height: 0.8;
 }
@@ -30,6 +29,9 @@ main .image-table img {
     border-radius: 50%;
 }
 
+main .image-table .image-tableq-row {
+    padding-bottom: 30px;
+}
 @media (min-width: 900px) {
     main .image-table {
         flex-direction: row;

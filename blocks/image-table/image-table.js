@@ -7,6 +7,7 @@ export default function decorate(block) {
             const pic = row.querySelectorAll('picture')[0];
             imgDiv.appendChild(pic);
         } else {
+            row.classList.add("image-table-row");
             const iconDiv = row.querySelectorAll(':scope>div')[0];
             iconDiv.classList.add('icon-box');
 
