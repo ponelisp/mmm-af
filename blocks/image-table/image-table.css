@@ -18,6 +18,10 @@ main .image-table .icon-box {
     line-height: 0.8;
 }
 
+main .image-table .icon-box span.icon {
+    color: #124e57;
+}
+
 main .image-table .text-box {
     margin-left: 85px;
 }
