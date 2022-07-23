@@ -49,6 +49,10 @@
     margin: unset;
 }
 
+.no-round-image img {
+    border-radius: unset;
+}
+
 .mid-icon div div:nth-child(1) {
     flex: 45%;
 }
