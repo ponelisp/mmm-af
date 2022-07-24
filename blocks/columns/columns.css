@@ -25,6 +25,10 @@
     }
 }
 
+.widetext div {
+    padding-bottom: 10px;
+}
+
 .widetext div div:nth-child(1) {
     flex: 5%;
 }
@@ -33,7 +37,8 @@
     flex: 95%;
 }
 
-.widetext span.icon {
+.widetext span.icon,
+.mid-icon .icon {
     float: left;
     display: flex;
     align-items: center;

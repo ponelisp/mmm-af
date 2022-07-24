@@ -110,11 +110,6 @@ span.icon-bi-cash-stack::before {
     content: "\F246";
 }
 
-span.icon-bi-exclamation::before {
-    font-family: bootstrap-icons;
-    content: "\F333";
-}
-
 span.icon-life-preserver::before {
   font-family: bootstrap-icons;
   content: "\f467";
