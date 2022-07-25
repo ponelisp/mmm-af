@@ -712,7 +712,7 @@ async function loadLazy(doc) {
   handleLinks(main);
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
-  addFavIcon(`${window.hlx.codeBasePath}/icons/favicon.svg`);
+  addFavIcon(`${window.hlx.codeBasePath}/icons/favicon.png`);
 }
 
 /**
