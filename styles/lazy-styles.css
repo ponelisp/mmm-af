@@ -59,6 +59,10 @@ span.icon-money::before {
   content: "\edf6";
 }
 
+span.icon-calendar::before {
+  content: "\ea15";
+}
+
 span.icon-question-mark::before {
   content: "\ee33";
 }
@@ -113,6 +117,21 @@ span.icon-bi-cash-stack::before {
 span.icon-life-preserver::before {
   font-family: bootstrap-icons;
   content: "\f467";
+}
+
+span.icon-envelope::before {
+  font-family: bootstrap-icons;
+  content: "\F32F";
+}
+
+span.icon-phone::before {
+  font-family: bootstrap-icons;
+  content: "\F4E7";
+}
+
+span.icon-door-open::before {
+  font-family: bootstrap-icons;
+  content: "\F308";
 }
 
 .retirement-picture ul li::marker {

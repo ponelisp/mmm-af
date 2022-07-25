@@ -1,6 +1,7 @@
 /* header and nav layout */
 header {
   z-index: 10;
+  background: linear-gradient(0deg, #031B1D 0%, #156979 100%) 0% 0% no-repeat padding-box padding-box transparent;
 }
 
 header nav {
@@ -12,11 +13,14 @@ header nav {
   padding: 0 2rem;
   z-index: 1;
   color: var(--nav-color);
-  background-color: var(--nav-background-color);
   width: 100vw;
   height: var(--nav-height);
   box-sizing: border-box;
   font-family: var(--body-font-family);
+}
+
+header .topbar a {
+  color: unset;
 }
 
 header nav a:any-link {
@@ -133,7 +137,7 @@ header nav .nav-sections ul  {
   font-weight: 500;
   list-style: none;
   padding-left: 0;
-} 
+}
 
 header nav .nav-sections li {
   font-size: 20px;
@@ -169,10 +173,53 @@ header nav[aria-expanded='true'] .nav-tools li {
   padding: 0;
 }
 
+header .topbar {
+  font-size: 12px;
+  height: var(--topbar-height);
+  border-bottom: 1px solid var(--topbar-border-color);
+  align-items: center;
+  padding: 0 2rem;
+  z-index: 1;
+  color: var(--topbar-color);
+  background-color: var(--topbar-background-color);
+  width: 100vw;
+  box-sizing: border-box;
+  font-family: var(--body-font-family);
+  display: flex;
+}
+
+header .topbar .icon {
+  font-size: unset;
+  display: unset;
+  padding: 8px 5px;
+}
+
+header .topbar .columns {
+  display: flex;
+  font-style: normal;
+  color: var(--topbar-color);
+}
+
+header .topbar .columns > div {
+  padding-right: 30px;
+}
+
+@media (max-width: 540px) {
+  header .topbar {
+    font-size: 8px;
+    padding: unset;
+  }
+}
+
+
 /* desktop nav styles */
 @media (min-width: 1100px) {
   header .header {
     margin: 0 auto;
+  }
+
+  header .topbar {
+    padding: 0 20rem;
   }
 
   header nav {
@@ -223,7 +270,7 @@ header nav[aria-expanded='true'] .nav-tools li {
     width: unset;
     margin: 0;
   }
-  
+
   header nav[aria-expanded='true'] .nav-sections ol {
     display: flex;
     min-height: unset;
@@ -269,7 +316,7 @@ header nav[aria-expanded='true'] .nav-tools li {
     height: 0;
     position: absolute;
     border-left: 15px solid transparent;
-    border-right: 15px solid transparent;    
+    border-right: 15px solid transparent;
     border-bottom: 15px solid var(--highlight-background-color);
     top: -15px;
     left: 20px;
