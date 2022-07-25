@@ -11,6 +11,18 @@ function collapseAllNavSections(sections) {
   });
 }
 
+async function decorateTopbar(block, cfg) {
+  // fetch topbar content
+  const topbarPath = cfg.topbar || '/topbar';
+  const resp = await fetch(`${topbarPath}.plain.html`);
+  if (resp.ok) {
+    const html = await resp.text();
+    const mainDiv = document.createElement('div');
+    mainDiv.setAttribute('id', 'topbar');
+    mainDiv.innerHTML = html;
+    block.append(mainDiv);
+  }
+}
 /**
  * decorates the header, mainly the nav
  * @param {Element} block The header block element
@@ -19,7 +31,7 @@ function collapseAllNavSections(sections) {
 export default async function decorate(block) {
   const cfg = readBlockConfig(block);
   block.textContent = '';
-
+  await decorateTopbar(block, cfg);
   // fetch nav content
   const navPath = cfg.nav || '/nav';
   const resp = await fetch(`${navPath}.plain.html`);

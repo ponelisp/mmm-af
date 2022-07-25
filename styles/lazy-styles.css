@@ -115,6 +115,21 @@ span.icon-life-preserver::before {
   content: "\f467";
 }
 
+span.icon-envelope::before {
+  font-family: bootstrap-icons;
+  content: "\F32F";
+}
+
+span.icon-phone::before {
+  font-family: bootstrap-icons;
+  content: "\F4E7";
+}
+
+span.icon-door-open::before {
+  font-family: bootstrap-icons;
+  content: "\F308";
+}
+
 .retirement-picture ul li::marker {
   font-family: bootstrap-icons;
   content: "\F234";
