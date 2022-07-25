@@ -18,7 +18,7 @@ async function decorateTopbar(block, cfg) {
   if (resp.ok) {
     const html = await resp.text();
     const mainDiv = document.createElement('div');
-    mainDiv.setAttribute('id', 'topbar');
+    mainDiv.setAttribute('class', 'topbar');
     mainDiv.innerHTML = html;
     block.append(mainDiv);
   }

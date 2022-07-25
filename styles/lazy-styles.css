@@ -59,6 +59,10 @@ span.icon-money::before {
   content: "\edf6";
 }
 
+span.icon-calendar::before {
+  content: "\ea15";
+}
+
 span.icon-question-mark::before {
   content: "\ee33";
 }
