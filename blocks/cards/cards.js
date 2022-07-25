@@ -3,7 +3,7 @@ import { createOptimizedPicture } from '../../scripts/scripts.js';
 export default function decorate(block) {
   /* change to ul, li */
   const ul = document.createElement('ul');
-  [...block.children].forEach((row) => {
+  [...block.children].forEach((row, i) => {
     const li = document.createElement('li');
     li.innerHTML = row.innerHTML;
     [...li.children].forEach((div) => {
@@ -16,6 +16,9 @@ export default function decorate(block) {
         div.className = 'cards-card-body';
       }
     });
+    setTimeout(() => {
+      li.classList.add('cards-card-appear');
+    }, (i + 1) * 100);
     if (block.classList.contains('highlight')) {
       block.parentElement.classList.add('highlight');
     }
