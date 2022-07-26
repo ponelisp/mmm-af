@@ -40,7 +40,7 @@ function openModal(section, path) {
 function closeModal(path) {
   const modal = getModal(path);
   if (modal && modal.classList.contains('appear')) {
-    modal.classList.remove('appear');
+    modal.remove();
     document.body.style.removeProperty('overflow');
     pushState('');
   }
