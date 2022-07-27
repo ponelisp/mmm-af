@@ -13,7 +13,7 @@ function openTab(e) {
     openTitles.forEach((tab) => tab.setAttribute('aria-selected', false));
     openContent.forEach((tab) => tab.setAttribute('aria-hidden', true));
     // open clicked tab
-    target.setAttribute('aria-selected', true);
+    target.closest('li').setAttribute('aria-selected', true);
     const content = parent.querySelector(`[aria-labelledby="${target.id}"]`);
     content.setAttribute('aria-hidden', false);
   }
@@ -22,6 +22,7 @@ function openTab(e) {
 export default function decorate(tabsBlock) {
   const tabLinksDiv = document.createElement('div');
   const tabLinksUL = document.createElement('ul');
+  tabLinksUL.setAttribute('role', 'tablist');
   tabLinksDiv.appendChild(tabLinksUL);
   tabLinksDiv.classList.add('tabs-links');
 
@@ -37,10 +38,11 @@ export default function decorate(tabsBlock) {
     rowLink.setAttribute('href', '_');
     rowLink.textContent = rowLinkTxt;
     rowLink.setAttribute('id', rowLinkTxt);
-    rowLink.setAttribute('aria-selected', false);
     rowLink.addEventListener('click', openTab);
 
     const tabLinkLI = document.createElement('li');
+    tabLinkLI.setAttribute('role', 'tab');
+    tabLinkLI.setAttribute('aria-selected', false);
     tabLinkLI.appendChild(rowLink);
     tabLinksUL.appendChild(tabLinkLI);
 
@@ -52,7 +54,7 @@ export default function decorate(tabsBlock) {
 
   // Display the first tab by default
   tabContentsDiv.firstChild.setAttribute('aria-hidden', false);
-  tabLinksUL.querySelector('a').setAttribute('aria-selected', true);
+  tabLinksUL.querySelector('li').setAttribute('aria-selected', true);
 
   tabsBlock.innerHTML = '';
   tabsBlock.appendChild(tabLinksDiv);
