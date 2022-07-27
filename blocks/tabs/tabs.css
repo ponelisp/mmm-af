@@ -33,7 +33,7 @@ main .tabs-links a:hover {
   color: var(--link-hover-color);
 }
 
-main .tabs-links a[aria-selected=true] {
+main .tabs-links li[aria-selected=true] a {
   color: var(--link-color);
   border-color: var(--link-color);
 }
