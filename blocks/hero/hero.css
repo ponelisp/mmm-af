@@ -43,9 +43,10 @@ main .hero picture {
 
 main .hero img {
     object-fit: cover;
-    width: auto;
+    width: auto;margin-bottom: -90px;
     height: 80vh;
     max-height: 800px;
+    margin-bottom: -90px;
 }
 
 @media (min-width:900px) {
