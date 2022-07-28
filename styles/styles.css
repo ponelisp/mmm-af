@@ -14,7 +14,7 @@
   /* colors */
   --link-color: rgba(241 90 34 / 90%);
   --link-hover-color: #124e57;
-  --button-hover-color: #ffc107;
+  --button-color: #F37344;
   --background-color: #fff;
   --overlay-background-color: #eee;
   --highlight-background-color: #ccc;
@@ -23,14 +23,19 @@
   /* fonts */
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
-  --bs-font-sans-serif: system-ui,-apple-system,"Segoe UI",roboto,"Helvetica Neue",arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  --bs-font-sans-serif: "Hero New", sans-serif;
+  --bs-body-font-weight: 400;
+  --bs-body-line-height: 1.5;
   --bs-font-monospace: sfmono-regular,menlo,monaco,consolas,"Liberation Mono","Courier New",monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255 255 255 / 15%), rgba(255 255 255 / 0%));
   --body-font-family: var(--bs-font-sans-serif);
+  --cards-font-size: 20px;
+  --cards-font-weight: 700;
+  --cards-font-color: var(--link-hover-color);
 
   /* body sizes */
-  --body-font-size-m: 16px;
-  --body-font-size-s: 12px;
+  --body-font-size-m: 1rem;
+  --body-font-size-s: 0.75rem;
 
   /* heading sizes */
   --heading-font-size-xxxl: 32px;
@@ -62,7 +67,8 @@ body {
   font-size: var(--body-font-size-m);
   margin: 0;
   font-family: var(--body-font-family);
-  line-height: 1.6;
+  font-weight: var(--bs-body-font-weight);
+  line-height: var(--bs-body-line-height);
   color: var(--text-color);
   background-color: var(--background-color);
   display: none;
@@ -166,8 +172,23 @@ a.button:any-link, button {
 
 a.button:hover, a.button:focus, button:hover, button:focus  {
   background-color: var(--link-hover-color);
-  background-color: var(--button-hover-color);
+  background-color: var(--button-color);
   cursor: pointer;
+}
+
+.modal a.button:any-link {
+  transition: 0.5s;
+  color: var(--button-color);
+  background: transparent;
+  border: 2px solid var(--button-color);
+}
+
+.modal a.button:hover {
+  background-color: var(--button-color);
+  color: var(--background-color);
+  text-decoration: none;
+  cursor: pointer;
+  text-decoration-style: solid;
 }
 
 button:disabled, button:disabled:hover {
