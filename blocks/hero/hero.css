@@ -44,7 +44,7 @@ main .hero picture {
 main .hero img {
     object-fit: cover;
     width: auto;
-    height: 100vh;
+    height: 80vh;
     max-height: 800px;
 }
 
@@ -61,6 +61,7 @@ main .hero img {
     main .hero img {
         object-fit: cover;
         width: 100%;
+        height: unset;
     }
 }
 
