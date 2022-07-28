@@ -19,7 +19,7 @@ main .section.cards-container {
     transition: all 0.5s ease-out;
     transform: translate(0,100px);
     opacity: 0;
-    padding: 20px;
+    padding: 12px;
 }
 
 .cards .cards-card-body {

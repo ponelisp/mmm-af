@@ -1,7 +1,7 @@
 footer {
   color: var(--footer-color);
   background-color: var(--footer-background-color);
-  font-size: var(--body-font-size-s);
+  font-size: var(--body-font-size-m);
 }
 
 footer .footer {
@@ -24,7 +24,7 @@ footer .footer a:any-link {
 }
 
 footer .footer h4 {
-  font-size: var(--heading-font-size-xs);
+  font-size: var(--heading-font-size-s);
   font-weight: normal;
 }
 
