@@ -579,12 +579,6 @@ const RUM_GENERATION = 'project-1'; // add your RUM generation information here
 sampleRUM('top');
 window.addEventListener('load', () => sampleRUM('load'));
 
-/*
-Scroll a bit above the anchor
-*/
-window.addEventListener('hashchange', () => {
-  window.scrollTo(window.scrollX, window.scrollY - 80);
-});
 document.addEventListener('click', () => sampleRUM('click'));
 
 loadPage(document);

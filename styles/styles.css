@@ -79,7 +79,7 @@ body.appear {
 }
 
 header {
-  height: var(--nav-height) + var(--topbar-height);
+  height: calc(var(--nav-height) + var(--topbar-height) + 1 em);
   background-color: var(--nav-background-color);
   position: fixed;
   width: 100vw;
@@ -91,7 +91,7 @@ h4, h5, h6 {
   line-height: 1.25;
   margin-top: .5em;
   margin-bottom: .5em;
-  scroll-margin: calc(var(--nav-height) + 1em);
+  scroll-margin: calc(var(--nav-height) + var(--topbar-height) + 1em);
 }
 
 h1 { font-size: var(--heading-font-size-xxl) }
@@ -292,7 +292,7 @@ main .section.highlight {
   background-color: var(--highlight-background-color);
 }
 
-.section-title h2 {
+main .section-title h2 {
     font-size: 32px;
     font-weight: 500;
     margin-bottom: 20px;
@@ -300,4 +300,9 @@ main .section.highlight {
     font-family: "Hero New", sans-serif;
     color: #635551;
     text-align: center;
+}
+
+/* Anchors */
+#importantdecisions, #financialfuture, #faq, #memberbooklet, #finance {
+  scroll-margin-top: calc(var(--nav-height) + var(--topbar-height) + 1em);
 }
