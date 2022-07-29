@@ -34,14 +34,12 @@ function openModal(section, path) {
     loadBlock(modal);
   }
   modal.classList.add('appear');
-  document.body.style.overflow = 'hidden';
 }
 
 function closeModal(path) {
   const modal = getModal(path);
   if (modal && modal.classList.contains('appear')) {
     modal.remove();
-    document.body.style.removeProperty('overflow');
     pushState('');
   }
 }
