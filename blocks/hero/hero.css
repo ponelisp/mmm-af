@@ -1,5 +1,9 @@
 /* block specific CSS goes here */
 
+main .hero-wrapper {
+    overflow-x: clip;
+}
+
 main .hero-container > div {
     max-width: unset;
 }
