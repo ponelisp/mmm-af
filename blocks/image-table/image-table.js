@@ -2,6 +2,9 @@ export default function decorate(block) {
   const imgDiv = document.createElement('div');
   const itemsDiv = document.createElement('div');
 
+  imgDiv.classList.add('image-table-picture');
+  itemsDiv.classList.add('image-table-rows');
+
   block.querySelectorAll(':scope>div').forEach((row, idx) => {
     if (idx === 0) {
       const pic = row.querySelectorAll('picture')[0];

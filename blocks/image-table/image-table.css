@@ -41,4 +41,9 @@ main .image-table .image-table-row {
     main .image-table img {
         width: 350px;
     }
+
+    main .image-table-rows {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
 }
