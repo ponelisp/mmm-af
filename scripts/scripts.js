@@ -620,7 +620,9 @@ function decorateExternalLinks(main) {
 }
 
 /**
- * Finds and decorates modal links.
+ * Link handling
+ * - Finds and decorates modal links.
+ * - Sets target for pdf links to _blank
  * @param {Element} main The container element
  */
 async function handleLinks(main) {
@@ -630,6 +632,8 @@ async function handleLinks(main) {
       // eslint-disable-next-line import/no-cycle
       const { handleModalLink } = await import('../blocks/modal/modal.js');
       handleModalLink(a);
+    } else if (href.includes('.') && href.split('.').pop().toUpperCase() === 'PDF') {
+      a.setAttribute('target', '_blank');
     }
   });
 }
