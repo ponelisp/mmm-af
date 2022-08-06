@@ -51,8 +51,8 @@ export function sampleRUM(checkpoint, data = {}) {
             data.cwv[measurement.name] = measurement.value;
             sendPing();
           };
-            // When loading `web-vitals` using a classic script, all the public
-            // methods can be found on the `webVitals` global namespace.
+          // When loading `web-vitals` using a classic script, all the public
+          // methods can be found on the `webVitals` global namespace.
           window.webVitals.getCLS(storeCWV);
           window.webVitals.getFID(storeCWV);
           window.webVitals.getLCP(storeCWV);
@@ -483,12 +483,12 @@ export function decorateButtons(element) {
           up.classList.add('button-container');
         }
         if (up.childNodes.length === 1 && up.tagName === 'STRONG'
-            && twoup.childNodes.length === 1 && twoup.tagName === 'P') {
+          && twoup.childNodes.length === 1 && twoup.tagName === 'P') {
           a.className = 'button primary';
           twoup.classList.add('button-container');
         }
         if (up.childNodes.length === 1 && up.tagName === 'EM'
-            && twoup.childNodes.length === 1 && twoup.tagName === 'P') {
+          && twoup.childNodes.length === 1 && twoup.tagName === 'P') {
           a.className = 'button secondary';
           twoup.classList.add('button-container');
         }
@@ -622,7 +622,7 @@ function decorateExternalLinks(main) {
 /**
  * Link handling
  * - Finds and decorates modal links.
- * - Sets target for pdf links to _blank
+ * - Else sets target for links as specified
  * @param {Element} main The container element
  */
 async function handleLinks(main) {
@@ -632,8 +632,19 @@ async function handleLinks(main) {
       // eslint-disable-next-line import/no-cycle
       const { handleModalLink } = await import('../blocks/modal/modal.js');
       handleModalLink(a);
-    } else if (href.includes('.') && href.split('.').pop().toUpperCase() === 'PDF') {
-      a.setAttribute('target', '_blank');
+    } else {
+      /*
+      A link target can be specified by appending #_ with appropriate target value to the href.
+      If present, first such occurance is set as the target attribute and removed from the href.
+      Any anchors in the href are retained without changes.
+      */
+      const regex = /(#_[a-zA-z]+)#?/;
+      const found = href.match(regex);
+      if (found && found.length > 1) {
+        const linkTarget = found[1];
+        a.setAttribute('href', href.replace(linkTarget, ''));
+        a.setAttribute('target', linkTarget.substring(1));
+      }
     }
   });
 }
