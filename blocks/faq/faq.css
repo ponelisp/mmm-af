@@ -20,7 +20,7 @@ main .faq .faq-question {
     margin: 10px 0;
     text-decoration: none;
     color: currentcolor;
-    font-size: 18px;
+    font-size: 16px;
     transition: all .25s ease-in-out;
     cursor: pointer;
 }
@@ -72,7 +72,7 @@ main .faq .faq-question .chevron::after {
 main .faq .faq-answer {
     color: #707070;
     padding: 8px 10px 8px 14px;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 28px;
     font-weight: 400;
     padding-bottom: 30px;
@@ -96,19 +96,19 @@ main .faq .faq-answer ul {
 }
 
 main .faq .faq-answer ul li {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 28px;
     list-style: disc;
 }
 
 main .faq .faq-answer ul li ul li {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 28px;
 }
 
 main .faq .faq-answer p {
     color: #707070;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 28px;
     font-weight: 400;
     margin-top: 0;
@@ -118,7 +118,7 @@ main .faq .faq-answer p {
 @media (max-width: 600px) {
     main .faq .faq-question,
     main .faq .faq-answer {
-        font-size: 18px;
+        font-size: 16px;
         line-height: 28px;
     }
 
