@@ -128,11 +128,18 @@ function decorateBlockEmbed($block, url) {
   }
 }
 
-export default function decorate($block) {
-  const $a = $block.querySelector('a[href]');
-  $block.textContent = '';
-  if ($a) {
-    const url = new URL($a.href.replace(/\/$/, ''));
-    decorateBlockEmbed($block, url);
+export default function decorate(block) {
+  const link = block.querySelector('a').href;
+  block.textContent = '';
+  if (block.closest('body')) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        observer.disconnect();
+        decorateBlockEmbed(block, new URL(link));
+      }
+    });
+    observer.observe(block);
+  } else {
+    decorateBlockEmbed(block, new URL(link));
   }
 }
