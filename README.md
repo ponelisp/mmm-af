@@ -1,9 +1,9 @@
-# Your Project's Title...
-Your project's description...
+# MMM AF project
+
 
 ## Environments
-- Preview: https://main--{repo}--{owner}.hlx.page/
-- Live: https://main--{repo}--{owner}.hlx.live/
+- Preview: https://main--mmm-af--hlxsites.hlx.page/
+- Live: https://main--mmm-af--hlxsites.hlx.live/
 
 ## Installation
 
